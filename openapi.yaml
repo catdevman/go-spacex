@@ -1,0 +1,1977 @@
+openapi: 3.0.0
+info:
+  title: SpaceX API
+  version: 4.0.0
+  description: Open Source REST API for launch, rocket, core, capsule, starlink, launchpad, and landing pad data.
+servers:
+  - url: https://api.spacexdata.com/v4
+  - url: https://api.spacexdata.com/v5
+paths:
+  /capsules:
+    get:
+      summary: Get all capsules
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Capsule'
+  /capsules/{id}:
+    get:
+      summary: Get one capsule
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Capsule'
+  /capsules/query:
+    post:
+      summary: Query capsules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Capsule'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /company:
+    get:
+      summary: Get company info
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+  /cores:
+    get:
+      summary: Get all cores
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Core'
+  /cores/{id}:
+    get:
+      summary: Get one core
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Core'
+  /cores/query:
+    post:
+      summary: Query cores
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Core'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /crew:
+    get:
+      summary: Get all crew members
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Crew'
+  /crew/{id}:
+    get:
+      summary: Get one crew member
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crew'
+  /crew/query:
+    post:
+      summary: Query crew members
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Crew'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /dragons:
+    get:
+      summary: Get all dragons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dragon'
+  /dragons/{id}:
+    get:
+      summary: Get one dragon
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dragon'
+  /dragons/query:
+    post:
+      summary: Query dragons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dragon'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /landpads:
+    get:
+      summary: Get all landpads
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Landpad'
+  /landpads/{id}:
+    get:
+      summary: Get one landpad
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Landpad'
+  /landpads/query:
+    post:
+      summary: Query landpads
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Landpad'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /launches:
+    get:
+      summary: Get all launches
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Launch'
+  /launches/latest:
+    get:
+      summary: Get the latest launch
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Launch'
+  /launches/next:
+    get:
+      summary: Get the next launch
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Launch'
+  /launches/past:
+    get:
+      summary: Get past launches
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Launch'
+  /launches/upcoming:
+    get:
+      summary: Get upcoming launches
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Launch'
+  /launches/{id}:
+    get:
+      summary: Get one launch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Launch'
+  /launches/query:
+    post:
+      summary: Query launches
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Launch'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /launchpads:
+    get:
+      summary: Get all launchpads
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Launchpad'
+  /launchpads/{id}:
+    get:
+      summary: Get one launchpad
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Launchpad'
+  /launchpads/query:
+    post:
+      summary: Query launchpads
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Launchpad'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /payloads:
+    get:
+      summary: Get all payloads
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payload'
+  /payloads/{id}:
+    get:
+      summary: Get one payload
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payload'
+  /payloads/query:
+    post:
+      summary: Query payloads
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Payload'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /roadster:
+    get:
+      summary: Get roadster info
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Roadster'
+  /roadster/query:
+    post:
+      summary: Query roadster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Roadster'
+  /rockets:
+    get:
+      summary: Get all rockets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rocket'
+  /rockets/{id}:
+    get:
+      summary: Get one rocket
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rocket'
+  /rockets/query:
+    post:
+      summary: Query rockets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Rocket'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /ships:
+    get:
+      summary: Get all ships
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ship'
+  /ships/{id}:
+    get:
+      summary: Get one ship
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ship'
+  /ships/query:
+    post:
+      summary: Query ships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Ship'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /starlink:
+    get:
+      summary: Get all starlink satellites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Starlink'
+  /starlink/{id}:
+    get:
+      summary: Get one starlink satellite
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Starlink'
+  /starlink/query:
+    post:
+      summary: Query starlink satellites
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Starlink'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+  /history:
+    get:
+      summary: Get all history events
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/History'
+  /history/{id}:
+    get:
+      summary: Get one history event
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/History'
+  /history/query:
+    post:
+      summary: Query history events
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/History'
+                  totalDocs:
+                    type: integer
+                  limit:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  page:
+                    type: integer
+                  pagingCounter:
+                    type: integer
+                  hasPrevPage:
+                    type: boolean
+                  hasNextPage:
+                    type: boolean
+                  prevPage:
+                    type: integer
+                    nullable: true
+                  nextPage:
+                    type: integer
+                    nullable: true
+components:
+  schemas:
+    Capsule:
+      type: object
+      properties:
+        serial:
+          type: string
+        status:
+          type: string
+          enum: [unknown, active, retired, destroyed]
+        type:
+          type: string
+          enum: ['Dragon 1.0', 'Dragon 1.1', 'Dragon 2.0']
+        dragon:
+          type: string
+        reuse_count:
+          type: integer
+        water_landings:
+          type: integer
+        land_landings:
+          type: integer
+        last_update:
+          type: string
+          nullable: true
+        launches:
+          type: array
+          items:
+            type: string
+    Company:
+      type: object
+      properties:
+        name:
+          type: string
+        founder:
+          type: string
+        founded:
+          type: integer
+        employees:
+          type: integer
+        vehicles:
+          type: integer
+        launch_sites:
+          type: integer
+        test_sites:
+          type: integer
+        ceo:
+          type: string
+        cto:
+          type: string
+        coo:
+          type: string
+        cto_propulsion:
+          type: string
+        valuation:
+          type: integer
+        headquarters:
+          type: object
+          properties:
+            address:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+        links:
+          type: object
+          properties:
+            website:
+              type: string
+            flickr:
+              type: string
+            twitter:
+              type: string
+            elon_twitter:
+              type: string
+        summary:
+          type: string
+    Core:
+      type: object
+      properties:
+        serial:
+          type: string
+        block:
+          type: integer
+          nullable: true
+        status:
+          type: string
+          enum: [active, inactive, unknown, expended, lost, retired]
+        reuse_count:
+          type: integer
+        rtls_attempts:
+          type: integer
+        rtls_landings:
+          type: integer
+        asds_attempts:
+          type: integer
+        asds_landings:
+          type: integer
+        last_update:
+          type: string
+          nullable: true
+        launches:
+          type: array
+          items:
+            type: string
+    Crew:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [active, inactive, retired, unknown]
+        agency:
+          type: string
+          nullable: true
+        image:
+          type: string
+          nullable: true
+        wikipedia:
+          type: string
+          nullable: true
+        launches:
+          type: array
+          items:
+            type: string
+    Dragon:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        active:
+          type: boolean
+        crew_capacity:
+          type: integer
+        sidewall_angle_deg:
+          type: integer
+        orbit_duration_yr:
+          type: integer
+        dry_mass_kg:
+          type: integer
+        dry_mass_lb:
+          type: integer
+        first_flight:
+          type: string
+          nullable: true
+        heat_shield:
+          type: object
+          properties:
+            material:
+              type: string
+            size_meters:
+              type: number
+            temp_degrees:
+              type: integer
+            dev_partner:
+              type: string
+        thrusters:
+          type: object
+        launch_payload_mass:
+          type: object
+          properties:
+            kg:
+              type: integer
+            lb:
+              type: integer
+        launch_payload_vol:
+          type: object
+          properties:
+            cubic_meters:
+              type: integer
+            cubic_feet:
+              type: integer
+        return_payload_mass:
+          type: object
+          properties:
+            kg:
+              type: integer
+            lb:
+              type: integer
+        return_payload_vol:
+          type: object
+          properties:
+            cubic_meters:
+              type: integer
+            cubic_feet:
+              type: integer
+        pressurized_capsule:
+          type: object
+          properties:
+            payload_volume:
+              type: object
+              properties:
+                cubic_meters:
+                  type: integer
+                cubic_feet:
+                  type: integer
+        trunk:
+          type: object
+          properties:
+            trunk_volume:
+              type: object
+              properties:
+                cubic_meters:
+                  type: integer
+                cubic_feet:
+                  type: integer
+            cargo:
+              type: object
+              properties:
+                solar_array:
+                  type: integer
+                unpressurized_cargo:
+                  type: boolean
+        height_w_trunk:
+          type: object
+          properties:
+            meters:
+              type: number
+            feet:
+              type: number
+        diameter:
+          type: object
+          properties:
+            meters:
+              type: number
+            feet:
+              type: number
+        flickr_images:
+          type: array
+          items:
+            type: string
+        wikipedia:
+          type: string
+        description:
+          type: string
+    Landpad:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        full_name:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [active, inactive, unknown, retired, lost, 'under construction']
+        type:
+          type: string
+          nullable: true
+        locality:
+          type: string
+          nullable: true
+        region:
+          type: string
+          nullable: true
+        latitude:
+          type: number
+          nullable: true
+        longitude:
+          type: number
+          nullable: true
+        landing_attempts:
+          type: integer
+        landing_successes:
+          type: integer
+        wikipedia:
+          type: string
+          nullable: true
+        details:
+          type: string
+          nullable: true
+        launches:
+          type: array
+          items:
+            type: string
+    Launch:
+      type: object
+      properties:
+        flight_number:
+          type: integer
+        name:
+          type: string
+        date_utc:
+          type: string
+        date_unix:
+          type: integer
+        date_local:
+          type: string
+        date_precision:
+          type: string
+          enum: [half, quarter, year, month, day, hour]
+        static_fire_date_utc:
+          type: string
+          nullable: true
+        static_fire_date_unix:
+          type: integer
+          nullable: true
+        tdb:
+          type: boolean
+        net:
+          type: boolean
+        window:
+          type: integer
+          nullable: true
+        rocket:
+          type: string
+          nullable: true
+        success:
+          type: boolean
+          nullable: true
+        failures:
+          type: array
+          items:
+            type: object
+            properties:
+              time:
+                type: integer
+              altitude:
+                type: integer
+              reason:
+                type: string
+        upcoming:
+          type: boolean
+        details:
+          type: string
+          nullable: true
+        fairings:
+          type: object
+          nullable: true
+          properties:
+            reused:
+              type: boolean
+              nullable: true
+            recovery_attempt:
+              type: boolean
+              nullable: true
+            recovered:
+              type: boolean
+              nullable: true
+            ships:
+              type: array
+              items:
+                type: string
+        crew:
+          type: array
+          items:
+            type: string
+        ships:
+          type: array
+          items:
+            type: string
+        capsules:
+          type: array
+          items:
+            type: string
+        payloads:
+          type: array
+          items:
+            type: string
+        launchpad:
+          type: string
+          nullable: true
+        cores:
+          type: array
+          items:
+            type: object
+            properties:
+              core:
+                type: string
+                nullable: true
+              flight:
+                type: integer
+                nullable: true
+              gridfins:
+                type: boolean
+                nullable: true
+              legs:
+                type: boolean
+                nullable: true
+              reused:
+                type: boolean
+                nullable: true
+              landing_attempt:
+                type: boolean
+                nullable: true
+              landing_success:
+                type: boolean
+                nullable: true
+              landing_type:
+                type: string
+                nullable: true
+              landpad:
+                type: string
+                nullable: true
+        links:
+          type: object
+          properties:
+            patch:
+              type: object
+              properties:
+                small:
+                  type: string
+                  nullable: true
+                large:
+                  type: string
+                  nullable: true
+            reddit:
+              type: object
+              properties:
+                campaign:
+                  type: string
+                  nullable: true
+                launch:
+                  type: string
+                  nullable: true
+                media:
+                  type: string
+                  nullable: true
+                recovery:
+                  type: string
+                  nullable: true
+            flickr:
+              type: object
+              properties:
+                small:
+                  type: array
+                  items:
+                    type: string
+                original:
+                  type: array
+                  items:
+                    type: string
+            presskit:
+              type: string
+              nullable: true
+            webcast:
+              type: string
+              nullable: true
+            youtube_id:
+              type: string
+              nullable: true
+            article:
+              type: string
+              nullable: true
+            wikipedia:
+              type: string
+              nullable: true
+        auto_update:
+          type: boolean
+    Launchpad:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        full_name:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [active, inactive, unknown, retired, lost, 'under construction']
+        locality:
+          type: string
+          nullable: true
+        region:
+          type: string
+          nullable: true
+        timezone:
+          type: string
+          nullable: true
+        latitude:
+          type: number
+          nullable: true
+        longitude:
+          type: number
+          nullable: true
+        launch_attempts:
+          type: integer
+        launch_successes:
+          type: integer
+        rockets:
+          type: array
+          items:
+            type: string
+        launches:
+          type: array
+          items:
+            type: string
+    Payload:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        reused:
+          type: boolean
+        launch:
+          type: string
+          nullable: true
+        customers:
+          type: array
+          items:
+            type: string
+        norad_ids:
+          type: array
+          items:
+            type: integer
+        nationalities:
+          type: array
+          items:
+            type: string
+        manufacturers:
+          type: array
+          items:
+            type: string
+        mass_kg:
+          type: integer
+          nullable: true
+        mass_lbs:
+          type: number
+          nullable: true
+        orbit:
+          type: string
+          nullable: true
+        reference_system:
+          type: string
+          nullable: true
+        regime:
+          type: string
+          nullable: true
+        longitude:
+          type: number
+          nullable: true
+        semi_major_axis_km:
+          type: number
+          nullable: true
+        eccentricity:
+          type: number
+          nullable: true
+        periapsis_km:
+          type: number
+          nullable: true
+        apoapsis_km:
+          type: number
+          nullable: true
+        inclination_deg:
+          type: number
+          nullable: true
+        period_min:
+          type: number
+          nullable: true
+        lifespan_years:
+          type: integer
+          nullable: true
+        epoch:
+          type: string
+          nullable: true
+        mean_motion:
+          type: number
+          nullable: true
+        raan:
+          type: number
+          nullable: true
+        arg_of_pericenter:
+          type: number
+          nullable: true
+        mean_anomaly:
+          type: number
+          nullable: true
+        dragon:
+          type: object
+          properties:
+            capsule:
+              type: string
+              nullable: true
+            mass_returned_kg:
+              type: number
+              nullable: true
+            mass_returned_lbs:
+              type: number
+              nullable: true
+            flight_time_sec:
+              type: integer
+              nullable: true
+            manifest:
+              type: string
+              nullable: true
+            water_landing:
+              type: boolean
+              nullable: true
+            land_landing:
+              type: boolean
+              nullable: true
+    Roadster:
+      type: object
+      properties:
+        name:
+          type: string
+        launch_date_utc:
+          type: string
+        launch_date_unix:
+          type: integer
+        launch_mass_kg:
+          type: integer
+        launch_mass_lbs:
+          type: integer
+        norad_id:
+          type: integer
+        epoch_jd:
+          type: number
+        orbit_type:
+          type: string
+        apoapsis_au:
+          type: number
+        periapsis_au:
+          type: number
+        semi_major_axis_au:
+          type: number
+        eccentricity:
+          type: number
+        inclination:
+          type: number
+        longitude:
+          type: number
+        periapsis_arg:
+          type: number
+        period_days:
+          type: number
+        speed_kph:
+          type: number
+        speed_mph:
+          type: number
+        earth_distance_km:
+          type: number
+        earth_distance_mi:
+          type: number
+        mars_distance_km:
+          type: number
+        mars_distance_mi:
+          type: number
+        flickr_images:
+          type: array
+          items:
+            type: string
+        wikipedia:
+          type: string
+        video:
+          type: string
+        details:
+          type: string
+    Rocket:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        active:
+          type: boolean
+        stages:
+          type: integer
+        boosters:
+          type: integer
+        cost_per_launch:
+          type: integer
+        success_rate_pct:
+          type: integer
+        first_flight:
+          type: string
+        country:
+          type: string
+        company:
+          type: string
+        height:
+          type: object
+          properties:
+            meters:
+              type: number
+            feet:
+              type: number
+        diameter:
+          type: object
+          properties:
+            meters:
+              type: number
+            feet:
+              type: number
+        mass:
+          type: object
+          properties:
+            kg:
+              type: integer
+            lb:
+              type: integer
+        payload_weights:
+          type: array
+          items:
+            type: object
+        first_stage:
+          type: object
+          properties:
+            reusable:
+              type: boolean
+            engines:
+              type: integer
+            fuel_amount_tons:
+              type: number
+            burn_time_sec:
+              type: integer
+            thrust_sea_level:
+              type: object
+              properties:
+                kN:
+                  type: integer
+                lbf:
+                  type: integer
+            thrust_vacuum:
+              type: object
+              properties:
+                kN:
+                  type: integer
+                lbf:
+                  type: integer
+        second_stage:
+          type: object
+          properties:
+            reusable:
+              type: boolean
+            engines:
+              type: integer
+            fuel_amount_tons:
+              type: number
+            burn_time_sec:
+              type: integer
+            thrust:
+              type: object
+              properties:
+                kN:
+                  type: integer
+                lbf:
+                  type: integer
+            payloads:
+              type: object
+              properties:
+                option_1:
+                  type: string
+                composite_fairing:
+                  type: object
+                  properties:
+                    height:
+                      type: object
+                      properties:
+                        meters:
+                          type: number
+                        feet:
+                          type: number
+                    diameter:
+                      type: object
+                      properties:
+                        meters:
+                          type: number
+                        feet:
+                          type: number
+        engines:
+          type: object
+          properties:
+            number:
+              type: integer
+            type:
+              type: string
+            version:
+              type: string
+            layout:
+              type: string
+            isp:
+              type: object
+              properties:
+                sea_level:
+                  type: integer
+                vacuum:
+                  type: integer
+            engine_loss_max:
+              type: integer
+            propellant_1:
+              type: string
+            propellant_2:
+              type: string
+            thrust_sea_level:
+              type: object
+              properties:
+                kN:
+                  type: integer
+                lbf:
+                  type: integer
+            thrust_vacuum:
+              type: object
+              properties:
+                kN:
+                  type: integer
+                lbf:
+                  type: integer
+            thrust_to_weight:
+              type: number
+        landing_legs:
+          type: object
+          properties:
+            number:
+              type: integer
+            material:
+              type: object
+        flickr_images:
+          type: array
+          items:
+            type: string
+        wikipedia:
+          type: string
+        description:
+          type: string
+    Ship:
+      type: object
+      properties:
+        name:
+          type: string
+        legacy_id:
+          type: string
+          nullable: true
+        model:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        roles:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        imo:
+          type: integer
+          nullable: true
+        mmsi:
+          type: integer
+          nullable: true
+        abs:
+          type: integer
+          nullable: true
+        class:
+          type: integer
+          nullable: true
+        mass_kg:
+          type: integer
+          nullable: true
+        mass_lbs:
+          type: integer
+          nullable: true
+        year_built:
+          type: integer
+          nullable: true
+        home_port:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        speed_kn:
+          type: number
+          nullable: true
+        course_deg:
+          type: number
+          nullable: true
+        latitude:
+          type: number
+          nullable: true
+        longitude:
+          type: number
+          nullable: true
+        last_ais_update:
+          type: string
+          nullable: true
+        link:
+          type: string
+          nullable: true
+        image:
+          type: string
+          nullable: true
+        launches:
+          type: array
+          items:
+            type: string
+    Starlink:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        launch:
+          type: string
+          nullable: true
+        longitude:
+          type: number
+          nullable: true
+        latitude:
+          type: number
+          nullable: true
+        height_km:
+          type: number
+          nullable: true
+        velocity_kms:
+          type: number
+          nullable: true
+        spaceTrack:
+          type: object
+          properties:
+            CCSDS_OMM_VERS:
+              type: string
+              nullable: true
+            COMMENT:
+              type: string
+              nullable: true
+            CREATION_DATE:
+              type: string
+              nullable: true
+            ORIGINATOR:
+              type: string
+              nullable: true
+            OBJECT_NAME:
+              type: string
+              nullable: true
+            OBJECT_ID:
+              type: string
+              nullable: true
+            CENTER_NAME:
+              type: string
+              nullable: true
+            REF_FRAME:
+              type: string
+              nullable: true
+            TIME_SYSTEM:
+              type: string
+              nullable: true
+            MEAN_ELEMENT_THEORY:
+              type: string
+              nullable: true
+            EPOCH:
+              type: string
+              nullable: true
+            MEAN_MOTION:
+              type: number
+              nullable: true
+            ECCENTRICITY:
+              type: number
+              nullable: true
+            INCLINATION:
+              type: number
+              nullable: true
+            RA_OF_ASC_NODE:
+              type: number
+              nullable: true
+            ARG_OF_PERICENTER:
+              type: number
+              nullable: true
+            MEAN_ANOMALY:
+              type: number
+              nullable: true
+            EPHEMERIS_TYPE:
+              type: integer
+              nullable: true
+            CLASSIFICATION_TYPE:
+              type: string
+              nullable: true
+            NORAD_CAT_ID:
+              type: integer
+              nullable: true
+            ELEMENT_SET_NO:
+              type: integer
+              nullable: true
+            REV_AT_EPOCH:
+              type: integer
+              nullable: true
+            BSTAR:
+              type: number
+              nullable: true
+            MEAN_MOTION_DOT:
+              type: number
+              nullable: true
+            MEAN_MOTION_DDOT:
+              type: number
+              nullable: true
+            SEMIMAJOR_AXIS:
+              type: number
+              nullable: true
+            PERIOD:
+              type: number
+              nullable: true
+            APOAPSIS:
+              type: number
+              nullable: true
+            PERIAPSIS:
+              type: number
+              nullable: true
+            OBJECT_TYPE:
+              type: string
+              nullable: true
+            RCS_SIZE:
+              type: string
+              nullable: true
+            COUNTRY_CODE:
+              type: string
+              nullable: true
+            LAUNCH_DATE:
+              type: string
+              nullable: true
+            SITE:
+              type: string
+              nullable: true
+            DECAY_DATE:
+              type: string
+              nullable: true
+            DECAYED:
+              type: integer
+              nullable: true
+            FILE:
+              type: integer
+              nullable: true
+            GP_ID:
+              type: integer
+              nullable: true
+            TLE_LINE0:
+              type: string
+              nullable: true
+            TLE_LINE1:
+              type: string
+              nullable: true
+            TLE_LINE2:
+              type: string
+              nullable: true
+    History:
+      type: object
+      properties:
+        title:
+          type: string
+          nullable: true
+        event_date_utc:
+          type: string
+          nullable: true
+        event_date_unix:
+          type: integer
+          nullable: true
+        details:
+          type: string
+          nullable: true
+        links:
+          type: object
+          properties:
+            article:
+              type: string
+              nullable: true
+    Query:
+      type: object
+      properties:
+        query:
+          type: object
+        options:
+          type: object
